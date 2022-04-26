@@ -12,13 +12,47 @@ Testbench::Testbench(sc_module_name mn) : sc_module(mn), adressOut("adressOut"),
 }
 
 void Testbench::operation(){
-	adressOut.write(10);
+	adressOut.write(0);
 	wait();
 	wait();
 	wait();
 	wait();
+
 	std::cout << sc_time_stamp() << '\n';
-	std::cout << operationIn.read();
+	int i = 255;
+	int aux = operationIn.read()&i;
+	std:: cout << aux << endl;
+	i = 65280; 
+//	i= 65535;
+	aux = operationIn.read()&i;
+	std:: cout << aux << endl;
+	i = 16711680; 
+//	i = 4080;
+	aux = operationIn.read()&i;
+	std:: cout << aux << endl;
+	i = 4278190080; 
+	aux = operationIn.read()&i;
+	std:: cout << aux << endl;
+
+	std:: cout << "\n" << operationIn.read() << endl;
+/*
+	for(int g=0;g<32;g++){
+		std:: cout << operationIn.read()[g];
+		if((g+1)%8==0)std:: cout << "   ";
+	}
+
+	std:: cout<< "\nAl reves" << endl;*/
+
+	for(int g=31;g>=0;g--){
+		std:: cout << operationIn.read()[g];
+		if(g%8==0)std:: cout << "   ";
+	}
+
+
+	/*for(int i=0;i<32;i++){
+		std::cout << operationIn.read()[i];
+		if(8%i==0) std::cout << "   ";
+	}*/
 	sc_stop();
 }
 //

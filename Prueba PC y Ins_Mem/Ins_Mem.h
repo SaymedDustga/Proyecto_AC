@@ -3,6 +3,7 @@
 
 #include <systemc.h>
 #include <fstream>
+#include <string>
 
 class InstructionMemory : public sc_module {
 
@@ -14,9 +15,11 @@ public:
 	SC_CTOR(InstructionMemory); 
 
 private:
+	std::string* aux;
+	sc_uint<32> intAux;
 	void operation();
-	void list(string);
-	bool initialized;
+	void list(std::string);
+//	bool initialized;
 };
 
 #endif
