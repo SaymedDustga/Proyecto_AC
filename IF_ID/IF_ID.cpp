@@ -9,7 +9,7 @@ IF_ID::IF_ID(sc_module_name moduleName) : sc_module(moduleName){
 /*	ID_EXOut.write(20);
 	instruction1Out.write(30);
 	instruction2Out.write(40);
-	instruction3Out.write(50);*/
+	instruction3Out.wdlsajdlksajdlksajdlksajdalsjdalsjdlksajd;*/
 /*
 	SC_METHOD(write);
 		sensitive << clk.neg();

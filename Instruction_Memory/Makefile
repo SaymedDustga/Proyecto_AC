@@ -4,7 +4,7 @@
 # Versión de SYSTEMC
 	VERSION = systemc-2.3.3
 # Especifique los archivos .cpp
-	SRCS = main.cpp IF_ID.cpp Testbench.cpp
+	SRCS = main.cpp Ins_Mem.cpp Testbench.cpp
 # Nombre del ejecutable
 	TARGET = test
 #
