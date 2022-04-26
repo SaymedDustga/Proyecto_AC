@@ -53,6 +53,24 @@ void Testbench::operation(){
 		std::cout << operationIn.read()[i];
 		if(8%i==0) std::cout << "   ";
 	}*/
+
+
+//test 2
+
+	adressOut.write(1);
+	wait();
+	wait();
+	wait();
+	wait();
+
+
+	std:: cout<< "\n\nOperacion 2, con sub\n" << endl;
+
+	for(int g=31;g>=0;g--){
+		std:: cout << operationIn.read()[g];
+		if(g%8==0)std:: cout << "   ";
+	}
+
 	sc_stop();
 }
 //
