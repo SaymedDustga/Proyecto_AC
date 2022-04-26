@@ -11,10 +11,10 @@ PC::PC(sc_module_name moduleName) : sc_module(moduleName), adressIn("adressIn"),
 
 void PC::write()
 {
-	//std::cout << '\n' << sc_time_stamp() << '\n';
+	// std::cout << '\n' << sc_time_stamp() << '\n';
 
 	adress = adressIn.read();
-	//std::cout << "escribiendo\n" << adressIn.read() << '\n';
+	// std::cout << "escribiendo\n" << adressIn.read() << '\n';
 }
 
 void PC::read()

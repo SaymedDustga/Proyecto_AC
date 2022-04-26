@@ -5,21 +5,22 @@
 #include <fstream>
 #include <string>
 
-class InstructionMemory : public sc_module {
+class InstructionMemory : public sc_module
+{
 
 public:
-
 	sc_in_clk clk;
 	sc_in<sc_uint<32>> instructionNumberIn;
 	sc_out<sc_uint<32>> operationOut;
-	SC_CTOR(InstructionMemory); 
+	SC_CTOR(InstructionMemory);
 
 private:
-	std::string* aux;
+	size_t numberOfInstructions;
+	std::string *instructionList;
 	sc_uint<32> intAux;
 	void operation();
 	void list(std::string);
-//	bool initialized;
+	//	bool initialized;
 };
 
 #endif
