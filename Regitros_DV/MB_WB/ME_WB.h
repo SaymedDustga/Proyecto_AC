@@ -1,0 +1,29 @@
+#ifndef ME_WB
+#define ME_WB
+
+#include <systemc.h>
+
+
+class me_wb: public sc_module {
+public:
+
+  sc_in<bool> clkIn;
+
+  sc_in<bool> Wb_MemtoRegIn, Wb_no_ideaIn ;//ni idea para sirve sea esa señal de control
+
+  sc_out<bool> Wb_MemtoRegOut, Wb_no_ideaOut ;//ni idea para sirve sea esa señal de control
+
+  sc_in<sc_int<32>> memo_In[2];
+  sc_out<sc_int<32>> memo_Out[2];
+
+  sc_in<sc_uint<32>> dir_In;
+  sc_out<sc_uint<32>> dir_Out;
+
+  SC_CTOR(me_wb);
+
+private:
+
+  void operation();
+};
+
+#endif
