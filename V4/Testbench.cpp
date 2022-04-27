@@ -3,14 +3,12 @@
 #include <ctime>
 #include <cstdlib>
 
-Testbench::Testbench(sc_module_name mn) : sc_module(mn), clk("clk")/*, muxSgOut("muxSgOut")*//*, ID_EXIn("ID_EXIn")*/, register1In("register1In"), adderIn2("adderIn2"), muxIn2("muxIn2")
+Testbench::Testbench(sc_module_name mn) : sc_module(mn), clk("clk") /*, muxSgOut("muxSgOut")*/ /*, ID_EXIn("ID_EXIn")*/, register1In("register1In"), adderIn2("adderIn2"), muxIn2("muxIn2")
 {
 
 	SC_THREAD(operation);
 	sensitive << clk;
 	dont_initialize();
-
-	// std:: cout << "\ntb" << endl;
 }
 
 void Testbench::operation()
@@ -25,9 +23,7 @@ void Testbench::operation()
 	wait();
 	wait();
 
-
-
-for (int g = 31; g >= 0; g--)
+	for (int g = 31; g >= 0; g--)
 	{
 		std::cout << register1In.read()[g];
 		if (g % 8 == 0)
@@ -39,9 +35,7 @@ for (int g = 31; g >= 0; g--)
 	wait();
 	wait();
 
-
-
-for (int g = 31; g >= 0; g--)
+	for (int g = 31; g >= 0; g--)
 	{
 		std::cout << register1In.read()[g];
 		if (g % 8 == 0)
@@ -53,9 +47,7 @@ for (int g = 31; g >= 0; g--)
 	wait();
 	wait();
 
-
-
-for (int g = 31; g >= 0; g--)
+	for (int g = 31; g >= 0; g--)
 	{
 		std::cout << register1In.read()[g];
 		if (g % 8 == 0)
@@ -67,9 +59,7 @@ for (int g = 31; g >= 0; g--)
 	wait();
 	wait();
 
-
-
-for (int g = 31; g >= 0; g--)
+	for (int g = 31; g >= 0; g--)
 	{
 		std::cout << register1In.read()[g];
 		if (g % 8 == 0)

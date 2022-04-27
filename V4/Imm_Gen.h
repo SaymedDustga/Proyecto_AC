@@ -8,8 +8,8 @@ class Imm_Gen : public sc_module{
 	public:
 
 		sc_in_clk clk;													
-		sc_in<sc_uint<32>> IF_IDIn;						
-		sc_out<sc_uint<32>> ID_EXOut;
+		sc_in<sc_int<8>> IF_IDIn;						
+		sc_out<sc_int<8>> ID_EXOut;
 		SC_CTOR(Imm_Gen);
 		
 	private:

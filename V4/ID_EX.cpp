@@ -11,9 +11,15 @@ void id_ex::operation() {
   for(int i = 0; i < 2; i++){
     memo_Out[i].write(memo_In[i].read());
   }
-  for(int i = 0; i < 3; i++){
+  for(int i = 0; i < 4; i++){
     dir_Out[i].write(dir_In[i].read());
   }
+  id_ex1Out.write(id_ex1In.read());
+  id_ex2Out.write(id_ex2In.read()); 
+
+
+  Imm_genOut.write(id_ex0In.read());
+
 
 
   Ex_ALUSrcOut.write(Ex_ALUSrcIn.read());

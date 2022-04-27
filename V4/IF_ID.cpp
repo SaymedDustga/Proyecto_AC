@@ -6,59 +6,35 @@ IF_ID::IF_ID(sc_module_name moduleName) : sc_module(moduleName), pcIn("pcIn"), i
 	SC_METHOD(operation);
 	sensitive << clk.neg();
 	dont_initialize();
-
-  std:: cout << "\nIF_ID" << endl;
-	/*	ID_EXOut.write(20);
-		instruction1Out.write(30);
-		instruction2Out.write(40);
-		instruction3Out.wdlsajdlksajdlksajdlksajdalsjdalsjdlksajd;*/
-	/*
-		SC_METHOD(write);
-			sensitive << clk.neg();
-
-		SC_METHOD(read);
-			sensitive << clk.pos();*/
 }
 
 void IF_ID::operation()
 {
 
-
+	sc_int<8> writeRegister;
+	sc_int<8> register1;
+	sc_int<8> register2;
+	sc_int<8> imm;
+	sc_int<8> instruction;
 	// Para testeo:
-	ID_EXOut.write(pcIn.read());
-	register1Out.write(insMemIn.read());
+	ID_EX0Out.write(pcIn.read());
 
-	/*
-		sc_int<8> p1, p2, p3, p4;
+	for (int i = 31, j = 0; i >= 24; i--, j++)
+		writeRegister[j] = insMemIn.read()[i];
+	for (int i = 23, j = 0; i >= 16; i--, j++
+	{
+		register1[j] = insMemIn.read()[i];
+		imm[h] = insMemIn.read()[i];
+	}
+	for (int i = 15, j = 0; i >= 8; i--, j++)
+		register2[j] = insMemIn.read()[i];
+	for (int i = 7, j = 0; i >= 0; i--, j++)
+		instruction[j] = insMemIn.read()[i];
 
-		for(int i = 0; i<8;i++){
-			p1[i] = insMemIn.read()[i];
-		}
-		for(int i = 0, j = 7; i<8; i++,j++){
-			p2[i] = insMemIn.read()[j];
-		}
-		for(int i = 0, j = 15; i<8; i++,j++){
-			p3[i] = insMemIn.read()[j];
-		}
-		for(int i = 0, j = 23; i<8; i++,j++){
-			p4[i] = insMemIn.read()[j];
-		}
-
-		register1Out.write(p2);
-		register2Out.write(p3);
-		ID_EXOut.write(cpIn.read());
-		instruction1Out.write(p2);
-		instruction2Out.write(insMemIn.read());
-		instruction3Out.write(insMemIn.read());*/
+		controlOut.write(controlOut);
+		fileRegister1Out.write(register1);
+		fileRegister2Out.write(register2);
+		immGenOut.write(imm);
+		ID_EX1Out.write(instruction);
+		ID_EX2Out.write(writeRegister);
 }
-
-/*
-void IF_ID::read(){
-
-	bOut.write(dataSg[rbIn.read()]);
-}
-
-void IF_ID::write(){
-
-	ID_EXOut.write(cpIn.read());
-}*/
