@@ -8,20 +8,20 @@ PC::PC(sc_module_name moduleName) : sc_module(moduleName), adressIn("adressIn"),
 	SC_METHOD(read);
 	sensitive << clk.pos();
 
-	std :: cout << "PC" << endl;
+	//std :: cout << "PC" << endl;
 }
 
 void PC::write()
 {
 	// std::cout << '\n' << sc_time_stamp() << '\n';
-  std:: cout << "\nPC write" << endl;
+  //std:: cout << "\nPC write" << endl;
 	adress = adressIn.read();
 	// std::cout << "escribiendo\n" << adressIn.read() << '\n';
 }
 
 void PC::read()
 {
-	  std:: cout << "\nPC read" << endl;
+	  //std:: cout << "\nPC read" << endl;
 	adressAdderOut.write(adress);
 	adressPC_IF_IDOut.write(adress);
 	adressInstructionMemoryOut.write(adress);

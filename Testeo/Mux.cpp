@@ -4,7 +4,7 @@
 Mux::Mux(sc_module_name nm) : sc_module(nm) {
   SC_METHOD(operation);
   sensitive << aIn << bIn << sIn;
-  std:: cout << "\nmux" << endl;
+  //std:: cout << "\nmux" << endl;
 }
 
 /**
