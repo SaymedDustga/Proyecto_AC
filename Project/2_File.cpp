@@ -13,9 +13,9 @@ File::File(sc_module_name nm) : sc_module(nm) {
 }
 
 void File::read() {
-  memory[0] = 0;
-  if (weIn.read()){
+  if (weIn.read() and rwIn.read()){
     memory[rwIn.read()] = wIn.read(); 
+    std:: cout << "\nEn el registro: " << rwIn.read() << " he guardado: " << wIn.read() << endl;
   }
 }
 

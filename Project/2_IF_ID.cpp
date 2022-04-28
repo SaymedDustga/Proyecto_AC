@@ -19,17 +19,21 @@ void IF_ID::operation()
 	// Para testeo:
 	ID_EX0Out.write(pcIn.read());
 
-	for (int i = 31, j = 0; i >= 24; i--, j++)
+	for (int i = 31, j = 7; i >= 24; i--, j--)
 		writeRegister[j] = insMemIn.read()[i];
-	for (int i = 23, j = 0; i >= 16; i--, j++)
+
+	for (int i = 23, j = 7; i >= 16; i--, j--)
 	{
 		register1[j] = insMemIn.read()[i];
 		imm[j] = insMemIn.read()[i];
 	}
-	for (int i = 15, j = 0; i >= 8; i--, j++)
+	for (int i = 15, j = 7; i >= 8; i--, j--)
 		register2[j] = insMemIn.read()[i];
-	for (int i = 7, j = 0; i >= 0; i--, j++)
+
+	for (int i = 7, j = 7; i >= 0; i--, j--)
 		instruction[j] = insMemIn.read()[i];
+
+	std::cout << "\nSoy el If_ID\nRegister01: " << register1 << "\nRegister02: " << register2 << "\nwriteRegister: " << writeRegister << "\nInstruction: " << instruction << endl;
 
 	fileRegister1Out.write(register1);
 	fileRegister2Out.write(register2);

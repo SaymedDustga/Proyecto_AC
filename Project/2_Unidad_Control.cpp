@@ -81,10 +81,10 @@ void Unidad_Control::operation() {
     Mem_MemReadOut.write(1);
     Mem_MemWriteOut.write(0);
     Mem_BranchOut.write(0);
-    Wb_MemtoRegOut.write(1);
+    Wb_MemtoRegOut.write(0);
     Ex_ALUSrcOut.write(1);
 
-  }else Wb_MemtoRegOut.write(0);
+  }else Wb_MemtoRegOut.write(1);
   if(dir_In.read() == 9){
     Wb_RegWriteOut.write(0);
     Mem_MemReadOut.write(0);

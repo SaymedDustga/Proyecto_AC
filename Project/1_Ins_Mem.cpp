@@ -1,7 +1,7 @@
 #include "1_Ins_Mem.h"
 InstructionMemory::InstructionMemory(sc_module_name moduleName) : sc_module(moduleName), instructionNumberIn("instructionNumberIn"), operationOut("operationOut")
 {
-	ifstream instructionFile("Instrucciones.txt", ios::in);
+	ifstream instructionFile("ins.txt", ios::in);
 	if (instructionFile.fail())
 		exit(EXIT_FAILURE);
 	numberOfInstructions = 0;
@@ -12,7 +12,7 @@ InstructionMemory::InstructionMemory(sc_module_name moduleName) : sc_module(modu
 		numberOfInstructions++;
 	}
 	instructionFile.close();
-	instructionFile.open("Instrucciones.txt", ios::in);
+	instructionFile.open("ins.txt", ios::in);
 	instructionList = new std::string[numberOfInstructions];
 	int i = 0;
 	while (!instructionFile.eof())
