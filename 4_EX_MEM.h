@@ -17,7 +17,7 @@ public:
 	sc_out<bool> Wb_MemtoRegOut, Wb_RegWriteOut; 
 
 	sc_in<sc_int<32>> memo_In[3];
-	sc_out<sc_int<32>> memo_Out[3];
+	sc_out<sc_int<32>> memo_Out[4];
 
 	sc_in<sc_int<8>> dir_In;
 	sc_out<sc_int<8>> dir_Out;
