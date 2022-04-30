@@ -11,7 +11,7 @@ PC::PC(sc_module_name moduleName) : sc_module(moduleName), adressIn("adressIn"),
 void PC::write()
 {
 	adress = adressIn.read();
-	std:: cout << "\n\n\nPC" << adress << "\n\n\n";
+
 }
 
 void PC::read()
