@@ -14,9 +14,9 @@ Testbench::Testbench(sc_module_name mn) : sc_module(mn), clk("clk") /*, muxSgOut
 void Testbench::operation()
 {
 
+	muxSgOut.write(false);
 	adderIn2.write(1);
 	muxIn2.write(0);
-	muxSgOut.write(false);
 
 	wait();
 	wait();

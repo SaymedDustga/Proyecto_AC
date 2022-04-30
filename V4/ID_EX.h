@@ -14,6 +14,7 @@ public:
 	sc_out<bool> Ex_ALUSrcOut, Ex_ALUOpOut;
 	sc_out<bool> Men_MemWriteOut, Men_MemReadOut, Men_BranchOut;
 	sc_out<bool> Wb_MemtoRegOut, Wb_no_ideaOut; // ni idea para sirve sea esa señal de control
+  
 	sc_in<sc_int<8>> Imm_genIn;
 	sc_out<sc_int<8>> Imm_genOut;
 

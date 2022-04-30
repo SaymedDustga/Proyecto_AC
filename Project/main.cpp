@@ -262,7 +262,7 @@ int sc_main(int argc, char *argv[])
 	ex_mem.clkIn(clock);
 	mem_wb.clkIn(clock);
 
-	
+	InstructionMemory.clk(clock);
 
 	sc_start();
 
