@@ -19,3 +19,4 @@ Hay una lista de 15 opciones posible de instrucciones a ejecutar:
 	// 14 beq
 	// 15 bne
 Es importante respetar los espacios y las comas para que el programa funcione correctamente.
+Para hacer pruebas en este programa, basta con ejecutar el archivo test que se crea en la terminal utilizando algunos modulos del testbench.
