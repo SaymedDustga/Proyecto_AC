@@ -118,7 +118,7 @@ void InstructionMemory::list(std::string instruction)
 		intAux += insN;
 		operationOut.write(intAux);
 	}
-	else if (aux == "lw" || aux == "sw" || aux == "jalr")
+	else if (aux == "lw" || aux == "sw"/* || aux == "jalr"*/)
 	{
 		std::string aux2(instruction.substr(instruction.find_first_of('x') + 1));
 		int dir01 = stoi(aux2);
@@ -137,8 +137,8 @@ void InstructionMemory::list(std::string instruction)
 			insN = 8;
 		else if (aux == "sw")
 			insN = 9;
-		else if (aux == "jalr")
-			insN = 16;
+		//else if (aux == "jalr")
+		//	insN = 16;
 		intAux += insN;
 		operationOut.write(intAux);
 	}
