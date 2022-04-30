@@ -11,5 +11,6 @@ void Adder::operation()
 {
 	int sum = number_1In.read();
 	int sum_2 = number_2In.read();
+//	cout << "\nLA SUMA ES: " << sum << " + " << sum_2 << endl;
 	resultOut.write(sum + sum_2);
 }

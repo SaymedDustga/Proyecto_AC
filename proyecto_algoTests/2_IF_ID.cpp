@@ -24,15 +24,15 @@ IF_ID::IF_ID(sc_module_name moduleName) : sc_module(moduleName), pcIn("pcIn"), i
 // 14 beq
 // 15 bne
 // 16 jalr
+
 void IF_ID::operation()
 {
-
 	sc_int<8> writeRegister;
 	sc_int<8> register1;
 	sc_int<8> register2;
 	sc_int<8> imm, imm2;
 	sc_int<8> instruction;
-	// Para testeo:
+
 	ID_EX0Out.write(pcIn.read());
 
 	for (int i = 31, j = 7; i >= 24; i--, j--)
@@ -52,23 +52,32 @@ void IF_ID::operation()
 	for (int i = 7, j = 7; i >= 0; i--, j--)
 		instruction[j] = insMemIn.read()[i];
 
-	// std::cout << "\nSoy el If_ID\nRegister01: " << register1 << "\nRegister02: " << register2 << "\nwriteRegister: " << writeRegister << "\nInstruction: " << instruction << endl;
+	fileRegister1Out.write(register1);
+	fileRegister2Out.write(register2);
 
 	if (instruction == 3 || instruction == 6 || instruction == 7 || instruction == 12 || instruction == 13)
 		immGenOut.write(imm2);
 	else
 		immGenOut.write(imm);
 
-	if(instruction == 8 || instruction == 9 || instruction == 16){
+	if (instruction == 8 || instruction == 9 || instruction == 16)
+	{
 
 		fileRegister1Out.write(register2);
 		fileRegister2Out.write(writeRegister); // El primer operando es el que se va a guardar en data memory
 		immGenOut.write(register1);
-
-		
-	}else{
+	}
+	else
+	{
 		fileRegister1Out.write(register1);
 		fileRegister2Out.write(register2);
+	}
+
+	if (instruction == 14 || instruction == 15)
+	{
+		fileRegister1Out.write(writeRegister);
+		fileRegister2Out.write(register1);
+		immGenOut.write(register2);
 	}
 
 	ID_EX1Out.write(instruction);

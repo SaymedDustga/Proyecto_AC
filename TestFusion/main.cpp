@@ -416,8 +416,8 @@ int sc_main(int argc, char *argv[])
 	Testbench4.clk(clock);
 
 	PC.clk(clock);
-//	File.clkIn(clock);
-//	data_memory.clkIn(clock);
+	File.clkIn(clock);
+	data_memory.clkIn(clock);
 
 	IF_ID.clk(clock);
 	id_ex.clkIn(clock);

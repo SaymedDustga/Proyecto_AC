@@ -3,9 +3,18 @@
 Data_Memory::Data_Memory(sc_module_name nm) : sc_module(nm)
 {
 	SC_METHOD(write);
+
+
+//	 sensitive << clkIn.neg();
+
 	 sensitive << clkIn.pos();
 	SC_METHOD(read);
+
+//	 sensitive << clkIn.pos();
+
 	 sensitive << clkIn.neg();
+
+
 }
 
 void Data_Memory::write()

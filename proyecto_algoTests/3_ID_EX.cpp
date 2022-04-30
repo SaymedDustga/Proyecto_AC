@@ -1,8 +1,7 @@
 #include "3_ID_EX.h"
 
-id_ex::id_ex(sc_module_name nm) : sc_module(nm)/*, clkIn, Ex_ALUSrcIn, Ex_ALUSrcOut, Mem_MemWriteIn, Mem_MemReadIn, Mem_BranchIn, Wb_MemtoRegIn, Wb_RegWriteIn, Ex_ALUOpIn, Ex_ALUOpOut, Mem_MemReadOut, Mem_BranchOut, Wb_MemtoRegOut, Wb_RegWriteOut, Imm_genIn, Imm_gen1Out, Imm_gen2Out, id_ex0In, id_ex0Out, id_ex1In, id_ex1Out, id_ex2In, id_ex2Out;*/
+id_ex::id_ex(sc_module_name nm) : sc_module(nm)
 {
-
 	SC_METHOD(operation);
 	sensitive << clkIn.pos();
 }
@@ -10,14 +9,8 @@ id_ex::id_ex(sc_module_name nm) : sc_module(nm)/*, clkIn, Ex_ALUSrcIn, Ex_ALUSrc
 void id_ex::operation()
 {
 	for (int i = 0; i < 2; i++)
-	{
-		std::cout << "\n\n\n\n\n"<<"SOY IDEX Y MANDO a ALU<< " << memo_In[i].read() << "\n\n\n\n\n";
 		memo_Out[i].write(memo_In[i].read());
-	}
-	/*for (int i = 0; i < 4; i++)
-	{
-		dir_Out[i].write(dir_In[i].read());
-	}*/
+
 	id_ex1Out.write(id_ex1In.read());
 	id_ex2Out.write(id_ex2In.read());
 

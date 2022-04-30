@@ -150,7 +150,7 @@ void InstructionMemory::list(std::string instruction)
 		int dir02 = stoi(aux3);
 
 		std::string aux4(aux3.substr(aux3.find_first_of(',') + 2));
-		size_t linea = 0;
+		sc_int<8> linea = 0;
 		for (size_t i = 0; i < numberOfInstructions; i++)
 		{
 			int pos = instructionList[i].find_first_of(':');
@@ -169,7 +169,8 @@ void InstructionMemory::list(std::string instruction)
 		intAux <<= 8;
 		intAux += dir02;
 		intAux <<= 8;
-		intAux += linea;
+		for (int h = 0; h < 8; h++)
+			intAux[h] = linea[h];
 		intAux <<= 8;
 		if (aux == "beq")
 			insN = 14;

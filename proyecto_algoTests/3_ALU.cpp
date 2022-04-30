@@ -5,8 +5,6 @@ ALU::ALU(sc_module_name nm) : sc_module(nm), number_1In("number_1In"), number_2I
 	SC_METHOD(operation);
 	sensitive << number_1In << number_2In << insIn;
 	dont_initialize();
-
-	// std:: cout << "\nALU" << endl;
 }
 
 // 1 add
@@ -29,26 +27,20 @@ ALU::ALU(sc_module_name nm) : sc_module(nm), number_1In("number_1In"), number_2I
 void ALU::operation()
 {
 
-//	std:: cout << "Hola buenas, soy la alu xd:\nMi instruccion es: " << insIn.read() << " Y mis entradas son: " << number_1In.read() << " Y " << number_2In.read() << endl; 
 	if (insIn.read() == 1)
 	{
 		resultOut.write(number_1In.read() + number_2In.read());
 		zeroOut.write(0);
-		std::cout << "suma   \n\n"
-				  << number_1In.read() + number_2In.read() << "\n";
 	}
 	if (insIn.read() == 2)
 	{
 		resultOut.write(number_1In.read() - number_2In.read());
 		zeroOut.write(0);
-	std:: cout << "\n\n\nALUUUU SE DESPIDEEEE, la salida es:" << number_1In.read() - number_2In.read() << "\n\n\n\n\n\n\n\n";
 	}
 	if (insIn.read() == 3)
 	{
 		resultOut.write(number_1In.read() + number_2In.read());
 		zeroOut.write(0);
-		std::cout << "suma   \n\n"
-				  << number_1In.read() + number_2In.read() << "\n";
 	}
 	if (insIn.read() == 4)
 	{
@@ -81,7 +73,6 @@ void ALU::operation()
 	if (insIn.read() == 8)
 	{
 		resultOut.write(number_1In.read() + number_2In.read());
-		//std:: cout << number_1In.read() << endl;
 		zeroOut.write(0);
 	}
 	if (insIn.read() == 9)

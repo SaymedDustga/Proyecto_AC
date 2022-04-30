@@ -3,18 +3,17 @@
 
 #include <systemc.h>
 
-class Imm_Gen : public sc_module{
+class Imm_Gen : public sc_module
+{
 
-	public:
+public:
+	sc_in<sc_int<8>> IF_IDIn;
+	sc_out<sc_int<32>> ID_EXOut;
 
-		//sc_in_clk clk;													
-		sc_in<sc_int<8>> IF_IDIn;						
-		sc_out<sc_int<32>> ID_EXOut;
-		SC_CTOR(Imm_Gen);
-		
-	private:
+	SC_CTOR(Imm_Gen);
 
-		void operation();
+private:
+	void operation();
 };
 
 #endif

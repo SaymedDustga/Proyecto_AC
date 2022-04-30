@@ -51,7 +51,6 @@ public:
 	sc_in<sc_int<8>> id_ex2In;
 	sc_vector<sc_in<sc_int<32>>> SC_NAMED(memo_In, 2);
 
-
 	SC_CTOR(Testbench1);
 
 private:

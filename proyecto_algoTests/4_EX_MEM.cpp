@@ -9,6 +9,8 @@ EX_MEM::EX_MEM(sc_module_name nm) : sc_module(nm)
 
 void EX_MEM::operation()
 {
+
+	//std:: cout << "\n\n\n\n\n\nEXMEM DEL SUM TENGO: " << memo_In[0].read() << "\n\n\n\n\n\n\n"; 
 	for (int i = 0; i < 3; i++){
 		memo_Out[i].write(memo_In[i].read());
 	}
