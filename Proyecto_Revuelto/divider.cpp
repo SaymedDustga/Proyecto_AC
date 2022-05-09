@@ -1,6 +1,6 @@
 #include "divider.h"
 
-using namespace std;
+
 
 divider::divider(sc_module_name moduleName) : sc_module(moduleName) {
 	SC_METHOD(process);

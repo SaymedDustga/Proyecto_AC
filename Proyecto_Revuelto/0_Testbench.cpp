@@ -1,7 +1,7 @@
 #include "0_Testbench.h"
 #include <iomanip>
 
-using namespace std;
+
 
 Testbench::Testbench(sc_module_name moduleName) : sc_module(moduleName)
 {
@@ -20,8 +20,8 @@ void Testbench::operation()
 }
 void Testbench::print()
 {
-	cout << "====================CAMINO DE DATOS===================\n";
-	cout << "Modulo: INSTRUCTION MEMORY-----------\n";
+	std::cout << "====================CAMINO DE DATOS===================\n";
+	std::cout << "Modulo: INSTRUCTION MEMORY-----------\n";
 
 	sc_uint<4> instruction;
 	sc_uint<5> operand1, operand2;
@@ -62,30 +62,30 @@ void Testbench::print()
 	std::cout << std::setw(12) << operand3.to_string();
 	std::cout << std::setw(15) << instruction.to_string() << '\n';
 	std::cout << "--------------------------------------------------------\n";
-	cout << endl;
+	std::cout << endl;
 
-	cout << "Modulo: Unidad control---------------------------\n";
-	cout << " Ex_ALUOpOut  :" << Ex_ALUOpOut.read().to_string() << "\n";
-	cout << " Ex_ALUSrcOut  :" << Ex_ALUSrcOut.read() << "\n";
-	cout << " Mem_MemWriteOut  :" << Mem_MemWriteOut.read() << "\n";
-	cout << " Mem_MemReadOut  :" << Mem_MemReadOut.read() << "\n";
-	cout << " Mem_BranchOut  :" << Mem_BranchOut.read() << "\n";
-	cout << " Wb_MemtoRegOut  :" << Wb_MemtoRegOut.read() << "\n";
-	cout << " Wb_RegWriteOut  :" << Wb_RegWriteOut.read() << "\n";
-	cout << endl;
+	std::cout << "Modulo: Unidad control---------------------------\n";
+	std::cout << " Ex_ALUOpOut  :" << Ex_ALUOpOut.read().to_string() << "\n";
+	std::cout << " Ex_ALUSrcOut  :" << Ex_ALUSrcOut.read() << "\n";
+	std::cout << " Mem_MemWriteOut  :" << Mem_MemWriteOut.read() << "\n";
+	std::cout << " Mem_MemReadOut  :" << Mem_MemReadOut.read() << "\n";
+	std::cout << " Mem_BranchOut  :" << Mem_BranchOut.read() << "\n";
+	std::cout << " Wb_MemtoRegOut  :" << Wb_MemtoRegOut.read() << "\n";
+	std::cout << " Wb_RegWriteOut  :" << Wb_RegWriteOut.read() << "\n";
+	std::cout << endl;
 
-	cout << "Modulo:  REGISTER-----------\n";
-	cout << " aOut  :" << aOut.read().to_string() << "\n";
-	cout << " bOut  :" << bOut.read().to_string() << "\n";
-	cout << endl;
+	std::cout << "Modulo:  REGISTER-----------\n";
+	std::cout << " aOut  :" << aOut.read().to_string() << "\n";
+	std::cout << " bOut  :" << bOut.read().to_string() << "\n";
+	std::cout << endl;
 
-	cout << "Modulo: ALU ------------------------\n";
-	cout << "  resultOut :" << resultOut_alu.read().to_string() << "\n";
-	cout << endl;
+	std::cout << "Modulo: ALU ------------------------\n";
+	std::cout << "  resultOut :" << resultOut_alu.read().to_string() << "\n";
+	std::cout << endl;
 
-	cout << "Modulo: DATA_MEMORY ------------------------\n";
-	cout << "  read_dataOut :" << read_dataOut.read().to_string() << "\n";
-	cout << "Modulo: MUX------------------------\n";
-	cout << "  cOut :" << cOut.read().to_string() << "\n";
-	cout << endl;
+	std::cout << "Modulo: DATA_MEMORY ------------------------\n";
+	std::cout << "  read_dataOut :" << read_dataOut.read().to_string() << "\n";
+	std::cout << "Modulo: MUX------------------------\n";
+	std::cout << "  cOut :" << cOut.read().to_string() << "\n";
+	std::cout << endl;
 }
