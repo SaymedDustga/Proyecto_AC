@@ -71,11 +71,14 @@ void InstructionMemory::list(std::string instruction)
 		// Bits 14 - 18, tercer registro (sc_uint<5>)
 
 		std::string aux2(instruction.substr(instruction.find_first_of('x') + 1));
-		sc_uint<5> dir01 = stoi(aux2);
+		sc_int<32> dir01 = stoi(aux2);
+		registerValidation(dir01);
 		std::string aux3(aux2.substr(aux2.find_first_of(',') + 3));
-		sc_uint<5> dir02 = stoi(aux3);
+		sc_int<32> dir02 = stoi(aux3);
+		registerValidation(dir02);
 		std::string aux4(aux3.substr(aux3.find_first_of(',') + 3));
-		sc_uint<5> dir03 = stoi(aux4);
+		sc_int<32> dir03 = stoi(aux4);
+		registerValidation(dir03);
 
 		operand <<= 14;
 		operand += dir03;
@@ -100,11 +103,6 @@ void InstructionMemory::list(std::string instruction)
 
 		operand += insN;
 		operationOut.write(operand);
-		//  for (int i = 31; i > -1; i--)
-		//  {
-		//  	std::cout << operand[i];
-		//  }
-		//				std:: cout << "\n\n\n\n add: " << dir03 << "\n\n\n\n";
 	}
 	else if (aux == "addi" or aux == "slli" or aux == "srli" or aux == "andi" or aux == "ori")
 	{
@@ -114,12 +112,14 @@ void InstructionMemory::list(std::string instruction)
 		// Bits 14 - 31, tercer registro (sc_uint<5>), aquí hay 18 bits de valor inmediato
 
 		std::string aux2(instruction.substr(instruction.find_first_of('x') + 1));
-		sc_uint<5> dir01 = stoi(aux2);
+		sc_int<32> dir01 = stoi(aux2);
+		registerValidation(dir01);
 		std::string aux3(aux2.substr(aux2.find_first_of(',') + 3));
-		sc_uint<5> dir02 = stoi(aux3);
+		sc_int<32> dir02 = stoi(aux3);
+		registerValidation(dir02);
 		std::string aux4(aux3.substr(aux3.find_first_of(',') + 2));
-		// El valor inmediato solo puede ser desde -2^17 hasta 2^17 - 1
-		sc_int<18> dir03 = stoi(aux4);
+		sc_int<32> dir03 = stoi(aux4);
+		immValidation(dir03);
 
 		for (sc_uint<5> i = 0; i < 18; i++)
 			operand[i] = dir03[i];
@@ -142,24 +142,23 @@ void InstructionMemory::list(std::string instruction)
 
 		operand += insN;
 		operationOut.write(operand);
-		//		std:: cout << "\n\n\n\n addi: " << dir03 << "\n\n\n\n";
 	}
-	else if (aux == "lw" or aux == "sw" /* or aux == "jalr"*/)
+	else if (aux == "lw" or aux == "sw")
 	{
 
 		std::string aux2(instruction.substr(instruction.find_first_of('x') + 1));
-		sc_uint<5> dir01 = stoi(aux2);
-		std::string aux3(aux2.substr(aux2.find_first_of(',') + 2));
+		sc_int<32> dir01 = stoi(aux2);
+		registerValidation(dir01);
 		// El valor inmediato solo puede ser desde -128 hasta 127
-		sc_int<18> dir02 = stoi(aux3);
+		std::string aux3(aux2.substr(aux2.find_first_of(',') + 2));
+		sc_int<32> dir02 = stoi(aux3);
 		std::string aux4(aux3.substr(aux3.find_first_of('x') + 1));
-		sc_uint<5> dir03 = stoi(aux4);
+		immValidation(dir02);
+		sc_int<32> dir03 = stoi(aux4);
+		registerValidation(dir03);
 
 		for (sc_uint<5> i = 0; i < 18; i++)
-		{
 			operand[i] = dir02[i];
-			//			std::cout <<operand[i];
-		}
 		operand <<= 5;
 		operand += dir03;
 		operand <<= 5;
@@ -170,28 +169,24 @@ void InstructionMemory::list(std::string instruction)
 			insN = 8;
 		else if (aux == "sw")
 			insN = 9;
-		// else if (aux == "jalr")
-		//	insN = 16;
 
 		operand += insN;
 		operationOut.write(operand);
-		// for (int i = 31; i > -1; i--)
-		// {
-		// 	std::cout << operand[i];
-		// }
-		//		std::cout << "\n\n\n\nlw op: " << dir02 << "\n\n\n\n";
 	}
 	else if (aux == "beq" or aux == "bne")
 	{
 		std::string aux2(instruction.substr(instruction.find_first_of('x') + 1));
-		sc_uint<5> dir01 = stoi(aux2);
+		sc_int<32> dir01 = stoi(aux2);
+		registerValidation(dir01);
 		std::string aux3(aux2.substr(aux2.find_first_of('x') + 1));
-		sc_uint<5> dir02 = stoi(aux3);
+		sc_int<32> dir02 = stoi(aux3);
+		registerValidation(dir02);
 
 		std::string aux4(aux3.substr(aux3.find_first_of(',') + 2));
 
 		aux4.pop_back();
 
+		bool found = false;
 		sc_int<18> linea = 0;
 		for (sc_int<18> i = 0; i < numberOfInstructions; i++)
 		{
@@ -203,9 +198,23 @@ void InstructionMemory::list(std::string instruction)
 				if (aux4 == temp)
 				{
 					linea = i - instructionNumberIn.read();
+					found = true;
 					break;
 				}
 			}
+		}
+
+		try
+		{
+			if (!found)
+			{
+				throw aux4.c_str();
+			}
+		}
+		catch (const char *err)
+		{
+				std::cout << "\n\nNo existe la etiqueta de salto " << err << " en el código especificado.\n\n";
+				sc_stop();
 		}
 
 		for (sc_uint<5> i = 0; i < 18; i++)
@@ -233,4 +242,33 @@ void InstructionMemory::operation()
 		list(instructionList[instructionNumberIn.read()]);
 	else
 		sc_stop();
+}
+
+inline void InstructionMemory::registerValidation(sc_int<32> dir)
+{
+	try
+	{
+		if (dir < 0 || dir > 31)
+			throw dir;
+	}
+	catch (sc_int<32> &dir)
+	{
+		std::cout << "\n\nEl registro ingresado " << dir << " no existe en el archivo de registros.\n\n";
+		sc_stop();
+	}
+}
+
+inline void InstructionMemory::immValidation(sc_int<32> dir)
+{
+	try
+	{
+		// El valor inmediato solo puede ser desde -2^17 hasta 2^17 - 1
+		if (dir < -131072 || dir > 131071)
+			throw dir;
+	}
+	catch (sc_int<32> dir)
+	{
+		std::cout << "\n\nEl valor inmediato ingresado " << dir << " no es válido en la operación.\n\n";
+		sc_stop();
+	}
 }

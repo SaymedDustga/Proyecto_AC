@@ -1,6 +1,6 @@
 #include "2_Control_Unit.h"
 
-Unidad_Control::Unidad_Control(sc_module_name nm) : sc_module(nm), dir_In("dir_In")/*, aux1("aux1"), aux2("axu2"), aux3("aux3"), aux4("aux4"), trueVal("trueVal"), falseVal("falseVal")*/
+Unidad_Control::Unidad_Control(sc_module_name nm) : sc_module(nm), dir_In("dir_In")
 {
 	Divider = new divider("Divider");	
 
@@ -337,7 +337,6 @@ void Unidad_Control::operation()
 }
 
 Unidad_Control::~Unidad_Control() {
-  // Es importante recordar liberar la memoria que asignamos
   delete Divider;
 
 }

@@ -72,36 +72,20 @@ void Testbench::print()
 	cout << " Mem_BranchOut  :" << Mem_BranchOut.read() << "\n";
 	cout << " Wb_MemtoRegOut  :" << Wb_MemtoRegOut.read() << "\n";
 	cout << " Wb_RegWriteOut  :" << Wb_RegWriteOut.read() << "\n";
-	// cout << " dir_In  :" << dir_In.read().to_string() << "\n";
 	cout << endl;
 
 	cout << "Modulo:  REGISTER-----------\n";
-	// cout << " rwIn  :" << rwIn.read().to_string() << "\n";
-	// cout << " raIn  :" << raIn.read().to_string() << "\n";
-	// cout << " rbIn  :" << rbIn.read().to_string() << "\n";
-	// cout << " wIn  :" << wIn.read().to_string() << "\n";
-	// cout << " weIn  :" << weIn.read() << "\n";
 	cout << " aOut  :" << aOut.read().to_string() << "\n";
 	cout << " bOut  :" << bOut.read().to_string() << "\n";
 	cout << endl;
 
 	cout << "Modulo: ALU ------------------------\n";
-	// cout<<"  insIn :"<< insIn_alu.read().to_string()<<"\n";
-	// cout<<"  number_1In :"<< number_1In_alu.read().to_string()<<"\n";
-	// cout<<"  number_2In :"<< number_2In_alu.read().to_string()<<"\n";
 	cout << "  resultOut :" << resultOut_alu.read().to_string() << "\n";
 	cout << endl;
 
 	cout << "Modulo: DATA_MEMORY ------------------------\n";
-	// cout<<"  addressIn :"<<  addressIn.read().to_string()<<"\n";
 	cout << "  read_dataOut :" << read_dataOut.read().to_string() << "\n";
-	// cout<<"  write_dataIn :"<< write_dataIn.read().to_string()<<"\n";
-	// cout<<"  writeIn :"<<  writeIn.read()<<"\n";
-	// cout<<"  readIn :"<<  readIn.read()<<"\n";
 	cout << "Modulo: MUX------------------------\n";
-	// cout << "  aIn :" << aIn.read().to_string() << "\n";
-	// cout << "  bIn :" << bIn.read().to_string() << "\n";
 	cout << "  cOut :" << cOut.read().to_string() << "\n";
-	// cout << "  sIn :" << sIn.read() << "\n";
 	cout << endl;
 }

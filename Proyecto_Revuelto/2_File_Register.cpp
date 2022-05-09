@@ -26,8 +26,6 @@ FileRegister::FileRegister(sc_module_name moduleName) : sc_module(moduleName), c
 
 void FileRegister::readA()
 {
-//	std::cout << "mis entradas de lectura son: " << raIn.read() << '\n';
-//	std:: cout << "Me llego: "
 	aOut.write(regSg[raIn.read()]);
 }
 
@@ -42,8 +40,8 @@ void FileRegister::write()
 
 	aSg = rwIn.read();
 	bSg = weIn.read();
-////	wait();
-	if (aSg and bSg/*cSg.read()*/)
+
+	if (cSg.read())
 	{
 		weSg[rwIn.read()].write(true);
 		wSg[rwIn.read()].write(wIn.read());

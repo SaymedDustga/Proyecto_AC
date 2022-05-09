@@ -9,12 +9,10 @@ id_ex::id_ex(sc_module_name nm) : sc_module(nm)
 
 void id_ex::operation()
 {
-	std::cout << "id_ex0In.read()     " << id_ex0In.read() << "\n\n";
-
-	id_ex0Out.write(id_ex0In.read());
 	for (int i = 0; i < 2; i++)
 		memo_Out[i].write(memo_In[i].read());
 
+	id_ex0Out.write(id_ex0In.read());
 	id_ex1Out.write(id_ex1In.read());
 	id_ex2Out.write(id_ex2In.read());
 

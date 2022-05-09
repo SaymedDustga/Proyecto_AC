@@ -65,21 +65,16 @@ void IF_ID::operation()
 	fileRegister1Out.write(operand2);
 	fileRegister2Out.write(operand3);
 
-	//if (instruction == 3 || instruction == 6 || instruction == 7 || instruction == 12 || instruction == 13)
-	//	immGenOut.write(imm);
-
 	if (instruction == 8 || instruction == 9)
 	{
 		fileRegister1Out.write(operand2);
 		fileRegister2Out.write(operand1);
-		//immGenOut.write(imm);
 	}
 
 	if (instruction == 14 || instruction == 15)
 	{
 		fileRegister1Out.write(operand1);
 		fileRegister2Out.write(operand2);
-		//immGenOut.write(register2);
 	}
 
 	immGenOut.write(imm);
