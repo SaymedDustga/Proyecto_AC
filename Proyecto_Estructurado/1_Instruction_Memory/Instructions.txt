@@ -1,0 +1,4 @@
+addi x28, x5, 1000
+sw x15, 32(x9)
+beq x7, x9, test
+test: sw x15, 32(x9)
