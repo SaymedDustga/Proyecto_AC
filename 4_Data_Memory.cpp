@@ -12,9 +12,7 @@ Data_Memory::Data_Memory(sc_module_name nm) : sc_module(nm)
 void Data_Memory::write()
 {
 	if (writeIn.read())
-	{
 		memory[addressIn.read()] = write_dataIn.read();
-	}
 }
 
 void Data_Memory::read()

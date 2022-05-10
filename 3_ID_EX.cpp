@@ -4,6 +4,7 @@ id_ex::id_ex(sc_module_name nm) : sc_module(nm)
 {
 	SC_METHOD(operation);
 	sensitive << clkIn.pos();
+	dont_initialize();
 }
 
 void id_ex::operation()
@@ -11,6 +12,7 @@ void id_ex::operation()
 	for (int i = 0; i < 2; i++)
 		memo_Out[i].write(memo_In[i].read());
 
+	id_ex0Out.write(id_ex0In.read());
 	id_ex1Out.write(id_ex1In.read());
 	id_ex2Out.write(id_ex2In.read());
 

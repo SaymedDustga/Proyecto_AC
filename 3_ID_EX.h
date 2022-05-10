@@ -27,11 +27,11 @@ public:
 	sc_in<sc_int<32>> id_ex0In;
 	sc_out<sc_int<32>> id_ex0Out;
 
-	sc_in<sc_int<8>> id_ex1In;
-	sc_out<sc_int<8>> id_ex1Out;
+	sc_in<sc_uint<4>> id_ex1In;
+	sc_out<sc_uint<4>> id_ex1Out;
 
-	sc_in<sc_int<8>> id_ex2In;
-	sc_out<sc_int<8>> id_ex2Out;
+	sc_in<sc_uint<5>> id_ex2In;
+	sc_out<sc_uint<5>> id_ex2Out;
 
 	sc_vector<sc_in<sc_int<32>>> SC_NAMED(memo_In, 2);
 	sc_vector<sc_out<sc_int<32>>> SC_NAMED(memo_Out, 2);

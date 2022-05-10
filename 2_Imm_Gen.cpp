@@ -4,7 +4,7 @@ Imm_Gen::Imm_Gen(sc_module_name moduleName) : sc_module(moduleName)
 {
 
 	SC_METHOD(operation);
-	sensitive << IF_IDIn;
+	sensitive << clk.neg();
 	dont_initialize();
 }
 

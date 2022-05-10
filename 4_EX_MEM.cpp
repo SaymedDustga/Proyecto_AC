@@ -9,17 +9,25 @@ EX_MEM::EX_MEM(sc_module_name nm) : sc_module(nm)
 
 void EX_MEM::operation()
 {
+	if (Mem_MemWriteIn.read() or Mem_MemReadIn.read())
+	{
+		try
+		{
+			if (memo_In[1].read() < 0 || memo_In[1].read() >= 256)
+				throw memo_In[1].read();
+		}
+		catch (sc_int<32> &dir)
+		{
+			std::cout << "\n\nAcceso a Cache L1 de Datos  en " << dir << " fuera de límites.\n\n";
+			sc_stop();
+		}
+	}
 
-	//std:: cout << "\n\n\n\n\n\nEXMEM DEL SUM TENGO: " << memo_In[0].read() << "\n\n\n\n\n\n\n"; 
 	for (int i = 0; i < 3; i++){
 		memo_Out[i].write(memo_In[i].read());
 	}
-	memo_Out[3].write(memo_In[1].read());//esto es para pasar la ramificacion que se hace en mem
-											 //debido a que como ya se dvide el cable para dirigirlo a 
-											 //el testbench no se puede dividir mas
-
+	memo_Out[3].write(memo_In[1].read());
 	dir_Out.write(dir_In.read());
-
 	alu_to_brachOut.write(alu_to_brachIn.read());
 	Mem_MemWriteOut.write(Mem_MemWriteIn.read());
 	Mem_MemReadOut.write(Mem_MemReadIn.read());

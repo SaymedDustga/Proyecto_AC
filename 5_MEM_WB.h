@@ -16,8 +16,8 @@ public:
   sc_vector<sc_in<sc_int<32>>> SC_NAMED(memo_In, 2);
   sc_vector<sc_out<sc_int<32>>> SC_NAMED(memo_Out, 2);
 
-  sc_in<sc_int<8>> dir_In;
-  sc_out<sc_int<8>> dir_Out;
+  sc_in<sc_uint<5>> dir_In;
+  sc_out<sc_uint<5>> dir_Out;
 
   SC_CTOR(MEM_WB);
 
