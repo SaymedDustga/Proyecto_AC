@@ -2,7 +2,8 @@
 Proyecto de Arquitectura del Computador
 Para la ejecución del programa simplemente es necesario ejecutar el comando make en la terminal, el cual creara un nuevo archivo test.
 Posteriormente, prosiga a introducir las instrucciones en el archivo "instrucciones.txt".
-Hay una lista de 15 opciones posible de instrucciones a ejecutar:
+Hay una lista de 16 opciones posible de instrucciones a ejecutar:
+	// 0 ble
 	// 1 add
 	// 2 sub
 	// 3 addi
