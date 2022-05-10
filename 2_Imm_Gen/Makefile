@@ -4,8 +4,7 @@
 # Versión de SYSTEMC
 	VERSION = systemc-2.3.3
 # Especifique los archivos .cpp
-	SRCS = 0_3_5_Mux.cpp 1.cpp 1_3_Adder.cpp 1_Instruction_Memory.cpp 1_PC.cpp 2_Control_Unit.cpp 2_Register_File.cpp 2_IF_ID.cpp 2_Imm_Gen.cpp 3_ALU.cpp 3_ALU_Control_Unit.cpp 3_ID_EX.cpp 4_Branch.cpp 4_Data_Memory.cpp 4_EX_MEM.cpp 5_MEM_WB.cpp main.cpp And4Gate.cpp AndGate.cpp OrGate.cpp NotGate.cpp divider.cpp Register.cpp Cell.cpp 0_Testbench.cpp
-
+	SRCS = main.cpp Testbench.cpp 2_Imm_Gen.cpp
 
 # Nombre del ejecutable
 	TARGET = test

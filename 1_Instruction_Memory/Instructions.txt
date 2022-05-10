@@ -1,0 +1,21 @@
+addi x4, x0, 51
+addi x2, x0, 7
+add x0, x0, x0
+add x0, x0, x0
+add x0, x0, x0
+sw x1, 25000(x2)
+andi x15, x1, 8
+or x16, x1, x2
+ori x17, x1, 517
+add x0, x0, x0
+add x0, x0, x0
+add x0, x0, x0
+add x0, x0, x0
+lw x3, -3(x1)
+beq x0, x0, jump
+jump: add x0, x0, x0
+add x0, x0, x0
+add x0, x0, x0
+add x0, x0, x0
+add x0, x17, x0
+add x0, x0, x0
